@@ -1,0 +1,21 @@
+{% load static %}
+
+
+{% include './includes/head.html' %}
+
+
+<div class="{% block header_class %} {% endblock header_class %} center">
+
+{% include './includes/header.html' %}
+{% block index_text %} {% endblock index_text %}
+
+</div>
+
+
+
+
+
+{% block content %} {% endblock content %}
+
+
+{% include './includes/footer.html' %}

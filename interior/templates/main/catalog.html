@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header_class %} catalog-top {% endblock header_class %}
+
+{% block index_text %}
+<h2 class="catalog-top__title"> Каталог </h2>
+{% endblock index_text %}
+
+
+{% block content %}
+	<section class="catalog__products products center">
+		<div class="products__nav">
+			<ul class="products__links breadcrumb">
+				<li class="breadcrumb__item">
+					<a href="{% url 'interior:index' %}" class="breadcrumb__link link">Главная</a>
+				</li>
+				<li class="breadcrumb__item breadcrumb__link">
+					Каталог товаров
+				</li>
+			</ul>
+			<form class="products__select">
+				<label class="label" for="sort">Порядок:&#160;</label>
+				<select class="select" name="" id="sort">
+					<option selected value="">
+						сперва новые
+					</option>
+					<option value="">
+						сперва старые
+					</option>
+				</select>
+			</form>
+		</div>
+		<div class="products__content">
+			{% for offer in offers %}
+				{% if offer.old_price %}
+					<div class="offer-products__product product">
+						<img class="product__img" src="{% static "img/products/product" %}{{ offer.picture }}.jpg" alt="special-product">
+						<h3 class="product__name">{{ offer.title }}</h3>
+						<p class="product__caption"> {{ offer.description}}	</p>
+						<div class="product__value">
+							<p class="product__price">{{ offer.price }} руб</p>
+							<p class="product__price price-old">{{ offer.old_price }} руб</p>
+						</div>
+						<div class="chose-box">
+							<button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
+							<button class="chose-box__btn">	{% include '../includes/svg-like.html' %} </button>
+						</div>
+					</div>
+				{% endif %}				
+			{% endfor %}
+			{% for prod in products %}
+				{% if not prod.old_price %}
+					<div class="products__product product">
+						<img class="product__img" src="{% static "img/products/product" %}{{ prod.picture }}.jpg" alt="special-product">
+						<h3 class="product__name">{{ prod.title }}</h3>
+						<p class="product__caption"> {{ prod.description }} </p>
+						<p class="product__price">{{ prod.price}} руб.</p>
+						<div class="chose-box">
+							<button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
+							<button class="chose-box__btn"> {% include '../includes/svg-like.html' %} </button>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+			
+		</div>
+		<a href="#" class="products__link-catalog">Показать еще</a>
+	</section>
+{% endblock content %}

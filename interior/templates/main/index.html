@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header_class %} top {% endblock header_class %}
+
+{% block index_text %}
+<h1 class="top__title">
+	Всё, чего заслуживает&#160;ваш&#160;дом
+</h1>
+<p class="top__slogan">
+	Наша мебель — ваше отражение
+</p>
+<a class="top__link" href="{% url 'interior:catalog' %}">
+	Перейти в каталог
+</a>
+<a class="top__anchor-link" href="#special-product">
+	{% include '../includes/svg/top-anchor.html' %}
+</a>
+{% endblock index_text %}
+
+
+{% block content %}
+
+<div class="for center">
+		<h2 class="for__title title">Мебель для: </h2>
+		<div class="for__content">
+			<a class="for__item for__item_1 for__item_bg" href="{% url 'interior:group_list' 'rest' %}">Отдыха</a>
+			<a class="for__item for__item_2 for__item_bg" href="{% url 'interior:group_list' 'work' %}">Работы</a>
+			<a class="for__item for__item_3" href="{% url 'interior:group_list' 'kitchen' %}">Кухни</a>
+			<a class="for__item for__item_4" href="{% url 'interior:group_list' 'child' %}">Детской</a>
+			<a class="for__item for__item_5" href="{% url 'interior:group_list' 'bath' %}">Ванной</a>
+		</div>
+	</div>
+
+	<section class="offer-products center" id="special-product">
+		<h2 class="offer-products__title title">Специальные предложения</h2>
+		<div class="offer-products__content">
+			{% for offer in offers %}
+				{% if offer.old_price %}
+					<div class="offer-products__product product">
+						<img class="product__img" src="{% static "img/products/product" %}{{ offer.picture }}.jpg" alt="special-product">
+						<h3 class="product__name">{{ offer.title }}</h3>
+						<p class="product__caption"> {{ offer.description}}	</p>
+						<div class="product__value">
+							<p class="product__price">{{ offer.price }} руб</p>
+							<p class="product__price price-old">{{ offer.old_price }} руб</p>
+						</div>
+						<div class="chose-box">
+							<button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
+							<button class="chose-box__btn">	{% include '../includes/svg-like.html' %} </button>
+						</div>
+					</div>
+				{% endif %}				
+			{% endfor %}
+		</div>
+	</section>
+
+	<section class="products center">
+		<h2 class="products__title title">Каталог товаров</h2>
+		<div class="products__content">
+		{% for prod in products %}
+			{% if not prod.old_price %}
+				<div class="products__product product">
+					<img class="product__img" src="{% static "img/products/product" %}{{ prod.picture }}.jpg" alt="special-product">
+					<h3 class="product__name">{{ prod.title }}</h3>
+					<p class="product__caption"> {{ prod.description }} </p>
+					<p class="product__price">{{ prod.price}} руб.</p>
+					<div class="chose-box">
+						<button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
+						<button class="chose-box__btn"> {% include '../includes/svg-like.html' %} </button>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+			
+
+		</div>
+		<a href="{% url 'interior:catalog' %}" class="products__link-catalog">Перейти в каталог</a>
+	</section>
+
+{% endblock content %}

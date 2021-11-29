@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header_class %} cart-top {% endblock header_class %}
+
+{% block index_text %}
+<h2 class="catalog-top__title"> Корзина </h2>
+{% endblock index_text %}
+
+
+{% block content %}
+
+<div class="cart center">
+    <div class="cart__content">
+        <div class="cart__head">
+            <p class="cart__name">Товар</p>
+            <p class="cart__name">К-во</p>
+        </div>
+        <div class="cart__items">
+            {% for card in cards %}
+            <div class="cart-item">
+                <div class="cart-item__content">
+                    <img src="{% static 'img/cart/cart' %}{{ card.picture }}.jpg" alt="cart" class="cart-item__image">
+                    <div class="cart-item__info">
+                        <h3 class="cart-item__subtitle">
+                           {{ card.title }}
+                        </h3>
+                        <p class="cart-item__caption product__caption">
+                            {{ card.description }}
+                        </p>
+                        <p class="cart-item__price">
+                            {{ card.price }} руб.
+                        </p>
+                        <div class="cart-item__links">
+                            <button class="cart-item__link">
+                                Избранные
+                            </button>
+                            <button class="cart-item__link">
+                                Удалить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control">
+                    <input class="control__input" type="number" min="0" max="10" step="1" value="1">
+                    <div class="control__box">
+                        <button class="control__top"></button>
+                        <button class="control__bottom"></button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="cart-item__buttons">
+            <button class="cart-item__btn">
+                Очистить корзину
+            </button>
+            <button class="cart-item__btn">
+                Продолжить покупки
+            </button>
+        </div>
+    </div>
+    <form class="cart-form" action="#">
+        <p class="cart-form__subtitle">
+            Оформление заказа
+        </p>
+        <div class="cart-form__info">
+            <input class="cart-form__input" type="text" placeholder="Имя Фамилия">
+            <input class="cart-form__input" type="tel" placeholder="+ 7 904 000 80 80">
+            <input class="cart-form__input" type="text" placeholder="Адрес доставки">
+        </div>
+        <div class="cart-form__results">
+            <div class="cart-form__result">Итого:</div>
+            <div class="cart-form__sum">128 000 руб.</div>
+        </div>
+        <button class="cart-form__submit" type="submit">Оформить заказ</button>
+    </form>
+</div>
+<section class="offer-products center">
+    <h2 class="offer-products__title title">Специальные предложения</h2>
+    <div class="offer-products__content">
+        {% for offer in offers %}
+				<div class="offer-products__product product">
+				<img class="product__img" src="{% static "img/special-offer/special-product" %}{{ offer.picture }}.jpg" alt="special-product">
+				<h3 class="product__name">{{ offer.title }}</h3>
+				<p class="product__caption"> {{ offer.description}}	</p>
+				<div class="product__value">
+					<p class="product__price">{{ offer.price }} руб</p>
+					<p class="product__price price-old">{{ offer.old_price }} руб</p>
+				</div>
+				<div class="chose-box">
+					<button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
+					<button class="chose-box__btn">	{% include '../includes/svg-like.html' %} </button>
+				</div>
+			</div>
+			{% endfor %}
+    </div>
+    <a href="{% url 'interior:catalog' %}" class="products__link-catalog cart-link">Перейти в каталог</a>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<header class="header">
+	<a class="header__logo" href="{% url 'interior:index' %}">
+		<img class="header__logo-img" src="{% static 'img/logo.svg' %}" alt="logo">
+	</a>
+	<input class="header__search" type="search" placeholder="Поиск">
+	<nav class="header__menu">
+		<a href="{% url 'interior:catalog' %}" class="header__link link">
+			Каталог
+		</a>
+		<a href="{% url 'interior:cart' %}" class="header__link link">
+			Корзина
+		</a>
+	</nav>
+	<nav class="menu-mobile">
+		{% include './svg/menu-one.html' %}
+		<a href="{% url 'interior:catalog' %}" class="link-mobile">
+			{% include './svg/menu-two.html' %}
+		</a>
+		<a href="{% url 'interior:cart' %}" class="link-mobile">
+			{% include './svg/menu-three.html' %}
+		</a>
+	</nav>
+</header>
