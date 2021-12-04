@@ -5,7 +5,12 @@
 	<a class="header__logo" href="{% url 'interior:index' %}">
 		<img class="header__logo-img" src="{% static 'img/logo.svg' %}" alt="logo">
 	</a>
-	<input class="header__search" type="search" placeholder="Поиск">
+	<form class="form-inline">
+		<div class="form-row">
+		<input name="q" class="header__search" type="search" 
+			placeholder="Поиск" {% if keyword %}value="{{ keyword }}"{% endif %}>
+		</div>
+	</form>
 	<nav class="header__menu">
 		<a href="{% url 'interior:catalog' %}" class="header__link link">
 			Каталог

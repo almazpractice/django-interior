@@ -15,7 +15,7 @@
     <div class="cart__content">
         <div class="cart__head">
             <p class="cart__name">Товар</p>
-            <p class="cart__name">К-во</p>
+            <p class="cart__name">Кол-во</p>
         </div>
         <div class="cart__items">
             {% for card in cards %}
@@ -82,20 +82,22 @@
     <h2 class="offer-products__title title">Специальные предложения</h2>
     <div class="offer-products__content">
         {% for offer in offers %}
-				<div class="offer-products__product product">
-				<img class="product__img" src="{% static "img/special-offer/special-product" %}{{ offer.picture }}.jpg" alt="special-product">
-				<h3 class="product__name">{{ offer.title }}</h3>
-				<p class="product__caption"> {{ offer.description}}	</p>
-				<div class="product__value">
-					<p class="product__price">{{ offer.price }} руб</p>
-					<p class="product__price price-old">{{ offer.old_price }} руб</p>
-				</div>
-				<div class="chose-box">
-					<button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
-					<button class="chose-box__btn">	{% include '../includes/svg-like.html' %} </button>
-				</div>
-			</div>
-			{% endfor %}
+            <div class="products__product product">
+                <div class="product__image">
+                    <img class="product__img" src="{% static "img/products/product" %}{{ offer.picture }}.jpg" alt="special-product">
+                    <div class="chose-box">
+                    <button class="chose-box__btn"> {% include '../includes/svg-add.html' %} </button>
+                    <button class="chose-box__btn">	{% include '../includes/svg-like.html' %} </button>
+                    </div>
+                </div>
+                <h3 class="product__name">{{ offer.title }}</h3>
+                <p class="product__caption">{{ offer.description}}</p>
+                <div class="product__value">
+                    <p class="product__price">{{ offer.price }} руб.</p>
+                    <p class="product__price price-old">{{ offer.old_price }} руб</p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
     <a href="{% url 'interior:catalog' %}" class="products__link-catalog cart-link">Перейти в каталог</a>
 </section>
