@@ -187,7 +187,7 @@ body {
 .header__link {
   font-size: 16px;
   line-height: 20px;
-  color: #ffffff;
+  color: #342623;
   text-decoration: none;
 }
 
@@ -206,15 +206,16 @@ body {
 }
 
 .top__slogan {
-  color: #ffffff;
+  color: #000;
   font-size: 24px;
   line-height: 32px;
   padding-bottom: 16px;
 }
 
 .top__link {
-  color: #ffffff;
-  font-size: 16px;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
   line-height: 24px;
 }
 
@@ -252,7 +253,7 @@ body {
   height: 415px;
   background-color: #3d3a38;
   background-repeat: no-repeat;
-  background-size: 107% 107%;
+  background-size: cover;
   background-position: center center;
   grid-column: span 4;
   display: -webkit-box;
@@ -267,11 +268,11 @@ body {
   -webkit-transition: .5s ease-in-out;
   -moz-transition: .5s ease-in-out;
   -o-transition: .5s ease-in-out;
-  transition: background-size 1s ease;
+  transition: transform 1s ease;
 }
 
 .for__item:hover {
-  background-size: 100% 100%;
+  transform: scale(1.08);
   cursor: pointer;
 }
 
@@ -280,23 +281,23 @@ body {
 }
 
 .for__item_1 {
-  background-image: url("../img/furniture_for/relax.jpg");
+  background-image: url("../img/furniture_for/frips.jpg");
 }
 
 .for__item_2 {
-  background-image: url("../img/furniture_for/work.jpg");
+  background-image: url("../img/furniture_for/mix.jpg");
 }
 
 .for__item_3 {
-  background-image: url("../img/furniture_for/kitchen.jpg");
+  background-image: url("../img/furniture_for/paste.jpg");
 }
 
 .for__item_4 {
-  background-image: url("../img/furniture_for/children.jpg");
+  background-image: url("../img/furniture_for/choko.JPG");
 }
 
 .for__item_5 {
-  background-image: url("../img/furniture_for/bathroom.jpg");
+  background-image: url("../img/furniture_for/mulled.jpg");
 }
 
 /* -------------------------- */
@@ -1260,7 +1261,7 @@ body {
     gap: 32px;
   }
   .top__title {
-    font-size: 48px;
+    font-size: 35px;
     line-height: 58.51px;
     text-align: center;
     word-break: break-word;

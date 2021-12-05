@@ -6,10 +6,10 @@
 
 {% block index_text %}
 <h1 class="top__title">
-	Всё, чего заслуживает&#160;ваш&#160;дом
+	Сладости, которые полезны
 </h1>
 <p class="top__slogan">
-	Наша мебель — ваше отражение
+	Фруктовые&#160;чипсы и домашняя&#160;пастила
 </p>
 <a class="top__link" href="{% url 'interior:catalog' %}">
 	Перейти в каталог
@@ -23,13 +23,13 @@
 {% block content %}
 
 <div class="for center">
-		<h2 class="for__title title">Мебель для: </h2>
+		<h2 class="for__title title">Категории: </h2>
 		<div class="for__content">
-			<a class="for__item for__item_1 for__item_bg" href="{% url 'interior:group_list' 'rest' %}">Отдыха</a>
-			<a class="for__item for__item_2 for__item_bg" href="{% url 'interior:group_list' 'work' %}">Работы</a>
-			<a class="for__item for__item_3" href="{% url 'interior:group_list' 'kitchen' %}">Кухни</a>
-			<a class="for__item for__item_4" href="{% url 'interior:group_list' 'child' %}">Детской</a>
-			<a class="for__item for__item_5" href="{% url 'interior:group_list' 'bath' %}">Ванной</a>
+			<a class="for__item for__item_1 for__item_bg" href="{% url 'interior:group_list' 'frips' %}">Фруктовые чипсы</a>
+			<a class="for__item for__item_2 for__item_bg" href="{% url 'interior:group_list' 'mix' %}">Миксы</a>
+			<a class="for__item for__item_3" href="{% url 'interior:group_list' 'paste' %}">Пастила</a>
+			<a class="for__item for__item_4" href="{% url 'interior:group_list' 'choco' %}">Шоколад</a>
+			<a class="for__item for__item_5" href="{% url 'interior:group_list' 'mulled' %}">Глинтвейн</a>
 		</div>
 	</div>
 

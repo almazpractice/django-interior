@@ -15,8 +15,8 @@ class Product(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     picture = models.IntegerField()
-    price = models.IntegerField()
-    old_price = models.IntegerField(default=0)
+    price = models.FloatField()
+    old_price = models.FloatField(default=0)
     group = models.ForeignKey(
         Group,
         blank=True,
